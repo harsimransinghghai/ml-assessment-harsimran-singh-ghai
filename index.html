@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stoneware Studio | Wheel-Throwing Classes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-primary-fixed-variant": "#77321a",
+          "surface-container-high": "#eae8e5",
+          "surface-tint": "#95482f",
+          "on-tertiary": "#ffffff",
+          "surface-dim": "#dcd9d7",
+          "on-tertiary-container": "#f8ffef",
+          "surface-container-highest": "#e5e2df",
+          "on-surface": "#1c1c1a",
+          "primary-container": "#b05e43",
+          "secondary": "#6b5c4c",
+          "on-error-container": "#93000a",
+          "on-secondary": "#ffffff",
+          "tertiary": "#52604b",
+          "on-secondary-fixed-variant": "#524436",
+          "primary-fixed": "#ffdbd0",
+          "on-primary": "#ffffff",
+          "on-tertiary-fixed-variant": "#3d4b37",
+          "on-primary-fixed": "#3a0b00",
+          "on-surface-variant": "#54433e",
+          "primary": "#92462d",
+          "surface": "#fcf9f6",
+          "on-primary-container": "#fffbff",
+          "on-tertiary-fixed": "#121f0e",
+          "on-error": "#ffffff",
+          "outline-variant": "#dac1ba",
+          "surface-container": "#f0edea",
+          "surface-container-lowest": "#ffffff",
+          "tertiary-container": "#6a7962",
+          "primary-fixed-dim": "#ffb59e",
+          "secondary-fixed-dim": "#d7c3b0",
+          "secondary-container": "#f4dfcb",
+          "inverse-surface": "#31302f",
+          "inverse-on-surface": "#f3f0ed",
+          "background": "#fcf9f6",
+          "on-background": "#1c1c1a",
+          "inverse-primary": "#ffb59e",
+          "secondary-fixed": "#f4dfcb",
+          "surface-bright": "#fcf9f6",
+          "error-container": "#ffdad6",
+          "surface-variant": "#e5e2df",
+          "surface-container-low": "#f6f3f0",
+          "error": "#ba1a1a",
+          "outline": "#87736c",
+          "on-secondary-fixed": "#241a0e",
+          "tertiary-fixed": "#d8e7cc",
+          "on-secondary-container": "#716252",
+          "tertiary-fixed-dim": "#bccbb1"
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem",
+          lg: "0.5rem",
+          xl: "0.75rem",
+          "2xl": "1rem",
+          "3xl": "1.5rem",
+          full: "9999px"
+        },
+        spacing: {
+          unit: "8px",
+          gutter: "24px",
+          "margin-mobile": "20px",
+          "margin-desktop": "64px",
+          "max-width": "1280px"
+        },
+        fontFamily: {
+          "display-lg": ["Playfair Display"],
+          "display-lg-mobile": ["Playfair Display"],
+          "headline-sm": ["Playfair Display"],
+          "label-md": ["DM Sans"],
+          "headline-md": ["Playfair Display"],
+          "body-lg": ["DM Sans"],
+          "label-sm": ["DM Sans"],
+          "body-md": ["DM Sans"]
+        },
+        fontSize: {
+          "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.01em", fontWeight: "600" }],
+          "display-lg-mobile": ["36px", { lineHeight: "44px", fontWeight: "600" }],
+          "headline-sm": ["24px", { lineHeight: "32px", fontWeight: "500" }],
+          "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "500" }],
+          "headline-md": ["32px", { lineHeight: "40px", fontWeight: "500" }],
+          "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+          "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.08em", fontWeight: "700" }],
+          "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }]
+        },
+        keyframes: {
+          fadeUp: { "0%": { opacity: "0", transform: "translateY(24px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+          fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+          shimmer: { "0%": { backgroundPosition: "-200% 0" }, "100%": { backgroundPosition: "200% 0" } },
+          float: { "0%,100%": { transform: "translateY(0px)" }, "50%": { transform: "translateY(-8px)" } },
+          spin_slow: { "0%": { transform: "rotate(0deg)" }, "100%": { transform: "rotate(360deg)" } }
+        },
+        animation: {
+          "fade-up": "fadeUp 0.7s ease forwards",
+          "fade-in": "fadeIn 0.5s ease forwards",
+          float: "float 4s ease-in-out infinite",
+          spin_slow: "spin_slow 20s linear infinite"
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #fcf9f6;
+    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    background-repeat: repeat;
+    -webkit-font-smoothing: antialiased;
+  }
+  .grain-overlay {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    opacity: 0.025;
+    background-image: url("https://www.transparenttextures.com/patterns/sandpaper.png");
+  }
+  .tactile-shadow { box-shadow: 0 20px 40px -10px rgba(28,28,26,0.08), 0 4px 12px -4px rgba(28,28,26,0.04); }
+  .ghost-border { border: 1px solid rgba(135,115,108,0.18); }
+  .hero-glow {
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(146,70,45,0.07) 0%, transparent 70%);
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, #92462d 0%, #b05e43 50%, #77321a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .nav-link-active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #92462d;
+    border-radius: 9999px;
+    margin-top: 2px;
+  }
+  .card-hover {
+    transition: transform 0.45s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.45s cubic-bezier(0.165,0.84,0.44,1);
+  }
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -15px rgba(28,28,26,0.12), 0 8px 20px -6px rgba(28,28,26,0.06);
+  }
+  .stat-divider { border-left: 1px solid rgba(135,115,108,0.2); }
+  .badge-pill {
+    background: rgba(255,219,208,0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(146,70,45,0.15);
+  }
+  .process-line {
+    background: linear-gradient(to right, #92462d 0%, #f4dfcb 100%);
+  }
+  .img-hover { transition: transform 0.7s cubic-bezier(0.165,0.84,0.44,1); }
+  .img-hover:hover { transform: scale(1.06); }
+  .availability-bar { height: 4px; border-radius: 9999px; background: #f0edea; }
+  .availability-fill { height: 100%; border-radius: 9999px; background: linear-gradient(to right, #92462d, #ffb59e); transition: width 1.2s ease; }
+  .quote-mark { font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 0.5; color: #ffdbd0; }
+  .mobile-menu { transform: translateY(-100%); transition: transform 0.35s cubic-bezier(0.165,0.84,0.44,1); }
+  .mobile-menu.open { transform: translateY(0); }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .ink-underline {
+    background-image: linear-gradient(to right, #92462d, #ffb59e);
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    transition: background-size 0.4s ease;
+  }
+  .ink-underline:hover { background-size: 100% 2px; }
+  .floating-cta {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 40;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+  .floating-cta.show { transform: translateY(0); opacity: 1; }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: #92462d;
+  }
+</style>
+</head>
+<body class="font-body-md text-on-surface overflow-x-hidden">
+<div class="grain-overlay"></div>
+
+<!-- Floating Book CTA -->
+<div class="floating-cta" id="floatingCta">
+  <button onclick="document.getElementById('classes').scrollIntoView({behavior:'smooth'})"
+    class="bg-primary text-on-primary px-6 py-3.5 font-label-md rounded-full shadow-2xl hover:bg-primary-container transition-all flex items-center gap-2 active:scale-95">
+    <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+    Book a Class
+  </button>
+</div>
+
+<!-- ===================== NAV ===================== -->
+<nav class="w-full top-0 sticky bg-surface/85 backdrop-blur-md z-40 border-b border-outline-variant/20" id="mainNav">
+  <div class="max-w-max-width mx-auto flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3 group">
+      <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="9" cy="10" rx="7" ry="4" stroke="#92462d" stroke-width="1.5" fill="none"/>
+          <path d="M4 10 Q9 4 14 10" stroke="#92462d" stroke-width="1.5" fill="none"/>
+          <circle cx="9" cy="5" r="1.5" fill="#92462d"/>
+        </svg>
+      </div>
+      <span class="font-display-lg text-headline-sm text-primary tracking-tight">Stoneware Studio</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex gap-8 items-center">
+      <a class="text-primary font-medium nav-link-active pb-1 font-body-md ink-underline" href="#">Classes</a>
+      <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-body-md ink-underline pb-1" href="#gallery">Gallery</a>
+      <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-body-md ink-underline pb-1" href="#about">About</a>
+      <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-body-md ink-underline pb-1" href="#instructors">Instructors</a>
+    </div>
+
+    <div class="hidden md:flex items-center gap-4">
+      <a href="mailto:hello@stonewarestudio.com" class="text-on-surface-variant font-body-md hover:text-primary transition-colors text-sm">hello@stonewarestudio.com</a>
+      <button onclick="document.getElementById('classes').scrollIntoView({behavior:'smooth'})"
+        class="bg-primary text-on-primary px-6 py-3 font-label-md rounded-full hover:bg-primary-container transition-all active:scale-95 shadow-sm">
+        Book Now
+      </button>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-surface-container transition-colors" aria-label="Toggle menu">
+      <span class="w-5 h-0.5 bg-on-surface rounded-full transition-all" id="bar1"></span>
+      <span class="w-5 h-0.5 bg-on-surface rounded-full transition-all" id="bar2"></span>
+      <span class="w-3 h-0.5 bg-on-surface rounded-full transition-all" id="bar3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu md:hidden absolute top-full left-0 w-full bg-surface/95 backdrop-blur-lg border-b border-outline-variant/20 px-margin-mobile py-6 flex flex-col gap-4">
+    <a class="text-on-surface font-medium py-2 border-b border-outline-variant/20" href="#">Classes</a>
+    <a class="text-on-surface-variant font-medium py-2 border-b border-outline-variant/20 hover:text-primary transition-colors" href="#gallery">Gallery</a>
+    <a class="text-on-surface-variant font-medium py-2 border-b border-outline-variant/20 hover:text-primary transition-colors" href="#about">About</a>
+    <a class="text-on-surface-variant font-medium py-2 border-b border-outline-variant/20 hover:text-primary transition-colors" href="#instructors">Instructors</a>
+    <button class="bg-primary text-on-primary py-4 font-label-md rounded-full mt-2 w-full">Book Now</button>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28" id="hero">
+  <div class="hero-glow absolute inset-0 pointer-events-none"></div>
+
+  <!-- Decorative ring -->
+  <div class="hidden lg:block absolute -right-32 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-outline-variant/20 pointer-events-none"></div>
+  <div class="hidden lg:block absolute -right-16 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-outline-variant/15 pointer-events-none"></div>
+
+  <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+    <!-- Left: Text -->
+    <div class="z-10 space-y-6">
+      <div class="section-label font-label-sm text-primary uppercase tracking-[0.2em]">The Art of Slow Living</div>
+
+      <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
+        Shape Something<br/>
+        <span class="text-gradient italic">Beautiful</span><br/>
+        with Your Hands
+      </h1>
+
+      <p class="font-body-lg text-on-surface-variant max-w-lg leading-relaxed">
+        Rediscover the physical connection between hand and clay. Our studio provides a sanctuary for intentional craft, where you master the rhythmic dance of the potter's wheel.
+      </p>
+
+      <div class="flex flex-wrap gap-4 pt-2">
+        <button onclick="document.getElementById('classes').scrollIntoView({behavior:'smooth'})"
+          class="bg-primary text-on-primary px-8 py-4 font-label-md rounded-full shadow-md hover:bg-primary-container transition-all active:scale-95 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+          View Schedule
+        </button>
+        <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"
+          class="border border-outline text-on-surface-variant px-8 py-4 font-label-md rounded-full hover:bg-surface-container transition-colors flex items-center gap-2">
+          Our Story
+          <span class="material-symbols-outlined text-[18px]">arrow_downward</span>
+        </button>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="flex gap-0 pt-4 bg-surface rounded-2xl p-5 ghost-border inline-flex w-fit">
+        <div class="px-5 first:pl-0 text-center">
+          <div class="font-display-lg text-[28px] leading-none text-primary font-semibold">12+</div>
+          <div class="font-label-sm text-on-surface-variant uppercase mt-1.5 tracking-widest">Years Open</div>
+        </div>
+        <div class="px-5 stat-divider text-center">
+          <div class="font-display-lg text-[28px] leading-none text-primary font-semibold">2,400+</div>
+          <div class="font-label-sm text-on-surface-variant uppercase mt-1.5 tracking-widest">Students</div>
+        </div>
+        <div class="px-5 stat-divider text-center">
+          <div class="font-display-lg text-[28px] leading-none text-primary font-semibold">98%</div>
+          <div class="font-label-sm text-on-surface-variant uppercase mt-1.5 tracking-widest">Return Rate</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="relative">
+      <!-- Floating badge -->
+      <div class="absolute -top-4 -left-4 z-20 badge-pill rounded-2xl p-4 shadow-lg animate-float hidden md:block">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings:'FILL' 1">star</span>
+          </div>
+          <div>
+            <div class="font-label-sm text-primary uppercase tracking-wide">All Materials</div>
+            <div class="font-body-md text-on-surface text-sm font-medium">Included</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating review badge -->
+      <div class="absolute -bottom-4 -right-4 z-20 badge-pill rounded-2xl p-4 shadow-lg hidden md:block">
+        <div class="flex items-center gap-2">
+          <div class="flex gap-0.5">
+            <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+            <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+            <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+            <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+            <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+          </div>
+          <div class="font-body-md text-on-surface text-sm font-medium">4.9 · 480 reviews</div>
+        </div>
+      </div>
+
+      <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ghost-border relative">
+        <img alt="Hands forming clay on a potter's wheel"
+          class="w-full h-full object-cover img-hover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSC8E8BNEDmE3_Wi3Xk0KbkMIRd-M_M-kMkTMdBudHGmXrPHcE2e8Zbp05m0HqGtSBROKCwCer71XiWqAol7v4axT5O0iV64gVuojaZWcIKWVvvcE9MPQPHZTLziIQGw1bWaCwOslWzp3rDp2O5y7oPZVU4xMOuc9B85r_ngFuCdWD-Y3JbUjk91MlzdEc5XewtX_xp31NQbNCCj6P5iKgYhGcyRTcwsUHeB4FuXX0D4rhEtZCe-UrSE3HhVW9y3jwqrlleklTWQI"/>
+        <!-- Image overlay gradient -->
+        <div class="absolute inset-0 bg-gradient-to-t from-on-surface/20 via-transparent to-transparent pointer-events-none"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== PHILOSOPHY SECTION ===================== -->
+<section class="py-20 bg-surface-container-low" id="about">
+  <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="text-center mb-14 reveal">
+      <div class="section-label font-label-sm text-primary uppercase tracking-[0.2em] justify-center mb-4">Why Stoneware Studio</div>
+      <h2 class="font-display-lg text-headline-md md:text-display-lg text-on-surface max-w-2xl mx-auto">Crafted with<br/><span class="italic text-primary">care and intention</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+      <!-- Pillar 1 -->
+      <div class="bg-surface rounded-2xl p-8 ghost-border reveal stagger-1 card-hover">
+        <div class="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings:'FILL' 1">auto_awesome</span>
+        </div>
+        <h3 class="font-headline-sm text-on-surface mb-3">Small Batch Classes</h3>
+        <p class="font-body-md text-on-surface-variant leading-relaxed">
+          Maximum 8 students per session so every participant gets genuine, hands-on instruction from our instructors.
+        </p>
+        <div class="mt-6 pt-6 border-t border-outline-variant/30">
+          <div class="flex items-center gap-2 text-primary font-label-md">
+            <span class="material-symbols-outlined text-[16px]">check_circle</span>
+            8 students max per class
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="bg-surface rounded-2xl p-8 ghost-border reveal stagger-2 card-hover">
+        <div class="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings:'FILL' 1">local_fire_department</span>
+        </div>
+        <h3 class="font-headline-sm text-on-surface mb-3">Full Kiln Access</h3>
+        <p class="font-body-md text-on-surface-variant leading-relaxed">
+          Your creations are bisque-fired and glaze-fired in our professional kiln. Clay, tools, and firings are all included in every class fee.
+        </p>
+        <div class="mt-6 pt-6 border-t border-outline-variant/30">
+          <div class="flex items-center gap-2 text-primary font-label-md">
+            <span class="material-symbols-outlined text-[16px]">check_circle</span>
+            All materials included
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="bg-surface rounded-2xl p-8 ghost-border reveal stagger-3 card-hover">
+        <div class="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings:'FILL' 1">diversity_3</span>
+        </div>
+        <h3 class="font-headline-sm text-on-surface mb-3">Community First</h3>
+        <p class="font-body-md text-on-surface-variant leading-relaxed">
+          We're more than a studio — we're a creative community. Join open studio sessions, glaze parties, and seasonal exhibitions.
+        </p>
+        <div class="mt-6 pt-6 border-t border-outline-variant/30">
+          <div class="flex items-center gap-2 text-primary font-label-md">
+            <span class="material-symbols-outlined text-[16px]">check_circle</span>
+            Monthly community events
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESS SECTION ===================== -->
+<section class="py-20 bg-surface">
+  <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="text-center mb-14 reveal">
+      <div class="section-label font-label-sm text-primary uppercase tracking-[0.2em] justify-center mb-4">The Process</div>
+      <h2 class="font-display-lg text-headline-md md:text-display-lg text-on-surface">From clay to<br/><span class="italic text-primary">heirloom</span></h2>
+    </div>
+
+    <div class="relative">
+      <!-- Connecting line (desktop) -->
+      <div class="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-px process-line opacity-30 z-0"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center text-center reveal stagger-1">
+          <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-6 z-10 relative shadow-lg">
+            <span class="material-symbols-outlined text-on-primary text-[26px]" style="font-variation-settings:'FILL' 1">edit_note</span>
+          </div>
+          <div class="font-label-sm text-primary uppercase tracking-widest mb-2">Step 01</div>
+          <h3 class="font-headline-sm text-on-surface mb-2">Book Your Seat</h3>
+          <p class="font-body-md text-on-surface-variant text-sm">Choose a class and reserve your wheel online. Spots fill fast.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center text-center reveal stagger-2">
+          <div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-6 z-10 relative">
+            <span class="material-symbols-outlined text-primary text-[26px]" style="font-variation-settings:'FILL' 1">potted_plant</span>
+          </div>
+          <div class="font-label-sm text-primary uppercase tracking-widest mb-2">Step 02</div>
+          <h3 class="font-headline-sm text-on-surface mb-2">Throw & Shape</h3>
+          <p class="font-body-md text-on-surface-variant text-sm">Get your hands in the clay under expert guidance in our studio.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center text-center reveal stagger-3">
+          <div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-6 z-10 relative">
+            <span class="material-symbols-outlined text-primary text-[26px]" style="font-variation-settings:'FILL' 1">palette</span>
+          </div>
+          <div class="font-label-sm text-primary uppercase tracking-widest mb-2">Step 03</div>
+          <h3 class="font-headline-sm text-on-surface mb-2">Glaze & Fire</h3>
+          <p class="font-body-md text-on-surface-variant text-sm">Choose from our curated glaze palette and we fire your pieces to maturity.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex flex-col items-center text-center reveal stagger-4">
+          <div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-6 z-10 relative">
+            <span class="material-symbols-outlined text-primary text-[26px]" style="font-variation-settings:'FILL' 1">home_storage</span>
+          </div>
+          <div class="font-label-sm text-primary uppercase tracking-widest mb-2">Step 04</div>
+          <h3 class="font-headline-sm text-on-surface mb-2">Take It Home</h3>
+          <p class="font-body-md text-on-surface-variant text-sm">Collect your finished, food-safe piece 2–3 weeks after firing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY SECTION ===================== -->
+<section class="py-24 bg-surface-container-low" id="gallery">
+  <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 reveal">
+      <div>
+        <div class="section-label font-label-sm text-primary uppercase tracking-[0.2em] mb-4">Student Creations</div>
+        <h2 class="font-display-lg text-headline-md md:text-headline-md text-on-surface">A gallery of intention<br/>and handmade beauty</h2>
+      </div>
+      <a class="font-label-md text-primary flex items-center gap-2 group border border-primary/30 rounded-full px-6 py-3 hover:bg-primary hover:text-on-primary transition-all shrink-0" href="#">
+        View Full Gallery
+        <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Masonry-style grid -->
+    <div class="grid grid-cols-2 md:grid-cols-12 gap-4 auto-rows-[200px]">
+      <!-- Large feature image -->
+      <div class="col-span-2 md:col-span-5 md:row-span-2 group relative overflow-hidden rounded-2xl bg-surface ghost-border">
+        <img alt="Hands forming clay on a spinning wheel"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSC8E8BNEDmE3_Wi3Xk0KbkMIRd-M_M-kMkTMdBudHGmXrPHcE2e8Zbp05m0HqGtSBROKCwCer71XiWqAol7v4axT5O0iV64gVuojaZWcIKWVvvcE9MPQPHZTLziIQGw1bWaCwOslWzp3rDp2O5y7oPZVU4xMOuc9B85r_ngFuCdWD-Y3JbUjk91MlzdEc5XewtX_xp31NQbNCCj6P5iKgYhGcyRTcwsUHeB4FuXX0D4rhEtZCe-UrSE3HhVW9y3jwqrlleklTWQI"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+          <span class="text-white font-label-md">Studio Work</span>
+        </div>
+      </div>
+
+      <!-- Top right 1 -->
+      <div class="col-span-1 md:col-span-4 group relative overflow-hidden rounded-2xl bg-surface ghost-border">
+        <img alt="Minimalist ceramic vase"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ_iTaAgtlTQNsBJU-3aQwh2ldRgxveMQKJyQK3YyLq4dfpw1EdGGe8_GcXHlZUFMmP3SZc-M9QzQG_dq_6rIKAUTcyzr-gkrvxohtwieCxYe2Ic4w_--xGWAZ2RJhQOD2f0OT3NNSZ7QgD1I2MyIUkOTfsdEy6f83gmMo86VMe60FVKGl9ihV6RX1sSekAJV1aoZIjAt-KrbmGUPm_EEAGai4KY0hmc_T75g7QebWPE-VjmQGUL0ApiHq96Tew-r_-hT8Y0foH-c"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <span class="text-white font-label-md text-sm">Tall Ovoid Vase · Sarah J.</span>
+        </div>
+      </div>
+
+      <!-- Top right 2 -->
+      <div class="col-span-1 md:col-span-3 group relative overflow-hidden rounded-2xl bg-surface ghost-border">
+        <img alt="Contemporary teapot"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWNdoE1MSqwS1Wxv43_xwnTM4Jkla1G_3Fsp2mDgSwqmGgEiz4RWIXfRo0n5OwW2u31Smax5wGW_lCSO8Cfy6-LUmVoGQqCdXCo4fQa21wOIRfj3g7B5tgEBHSPpcpQ5HdJ69gkCCopfDbddMSPDoENLhYgXIdJFw4msUAKt3hOIjoHI0hcLR86vZeK5iBa1JQFHe7vXPvYLO7itNBAK91HhweYZ2TYbY0M-L_TAOLiFz_2FhlG60wwbjUZDsQI9gOQ9T5lQ"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <span class="text-white font-label-md text-sm">Teapot · Marcus T.</span>
+        </div>
+      </div>
+
+      <!-- Bottom row 1 -->
+      <div class="col-span-1 md:col-span-3 group relative overflow-hidden rounded-2xl bg-surface ghost-border">
+        <img alt="Handmade glazed mugs"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm_-DvxIKDOz348hi09CLIeYvPLtp8BcFF5263FXCXgQ0c9WH2xO_oImP1PJUpM4WLgMvyasqKCrx3ZxuRcfrr-yYLzw_CXyns6K7cTizLQ-eAc4r7U2tbww2wPmUyOm7VjcquQUFb_M5Je_yt7b8vNWLl_kAg-qAu6FGs9syuSN47aziwtNfXOr0dPlszAQeISMYVy3j62gLdxwzjYFxuxE2Gmkt4kxGJ-xE35yv8ZrI9fRZAsBnD0uzitW6nUy80lwxIQxoH_PU"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <span class="text-white font-label-md text-sm">Cobalt Mugs Set</span>
+        </div>
+      </div>
+
+      <!-- Bottom row 2 - tall -->
+      <div class="col-span-1 md:col-span-4 group relative overflow-hidden rounded-2xl bg-surface ghost-border">
+        <img alt="Stack of ceramic bowls"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh45FipSlkNmNY_wnkDY4OGlJt4_K8X7kKutbQSRAUvlZO4M4PyBNxbNpS8d2cHGIK9tJGBaXcuHZ0pVtKQbWkWHn7gdGNwHbEWqU_4LRtAI-oTaYutR0MTBuGpcw-iUfEyoYNBC2dRAWYtsyWECjVL7lteSG5Zs8H8QaA-bTXUc5CHz-v-ucKC3ch6AB3s3756QDMo5U_h-ZVOx062oZDzRYga1qcc6PK_-ahvJt3vTmIIFpiJqzxcP6K0SC_RYk2Pq7PprVyhzI"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <span class="text-white font-label-md text-sm">Earthy Bowl Collection</span>
+        </div>
+      </div>
+
+      <!-- Bottom row 3 -->
+      <div class="col-span-2 md:col-span-5 group relative overflow-hidden rounded-2xl bg-surface ghost-border">
+        <img alt="Drying pottery vessels"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ3PXMnaeCY-Guzox6uHwJ0YQxvn-BZ0bvwjVPjJeXR_WX2Me5w5nspgEY-KQavXgUKicoS56VzAvTu2wFR6qVHAN6oClO7cXWjxPFOSH2fCmdl0W_5W2x7zlxzEtTyUwkvZ-eTgU4zPn0lFSZL9YvZid9jp0Iv_nRzPGwWa_cq8LIcIT7vXz7KNk378zALf-SbeKWAmoBvpugMZeq_3s2zN0i1iqabaiORHPNR8GWy7EcpsnvlcaUzAb634VOtcopB8uusW3CWpE"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <span class="text-white font-label-md text-sm">Drying Rack · Open Studio</span>
+        </div>
+      </div>
+
+      <!-- Crackle glaze -->
+      <div class="col-span-2 md:col-span-7 group relative overflow-hidden rounded-2xl bg-surface ghost-border">
+        <img alt="Crackle glaze detail"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWRH-6AzsfLQ50gnF3k2jUyB4Ox5ReLNRaLd6vpN-L1Fw3-C_FwvmYumgWTE0xd9Mj2Y5skPvkP2c3i__DL6RxwE3N4jpdnOGFvObID3wbDTdKT6d7skHfodKM-gfw5LRRAdVPRkHTT80CO8HnRmjI9IyPbjkQHFvmXu0sSj8KGdfKt6J4VQr3V6mbC427Bh8yRsxOB3lEH82cjT_Jj4uZ7RTh9vqo-WgJuvGJgHh5Kw60"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <span class="text-white font-label-md text-sm">Crackle Turquoise Glaze Detail</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLASSES / BOOKING SECTION ===================== -->
+<section class="py-24 max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop" id="classes">
+  <div class="text-center mb-16 reveal">
+    <div class="section-label font-label-sm text-primary uppercase tracking-[0.2em] justify-center mb-4">Join Us</div>
+    <h2 class="font-display-lg text-headline-md md:text-display-lg text-on-surface mb-4">Upcoming Classes</h2>
+    <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Find your flow. All materials — clay, tools and firings — are included in every session fee.</p>
+  </div>
+
+  <div class="space-y-5">
+    <!-- Class Card 1 — Available -->
+    <div class="bg-surface tactile-shadow rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 card-hover ghost-border reveal">
+      <!-- Date badge -->
+      <div class="flex items-center gap-6">
+        <div class="w-16 h-16 rounded-2xl bg-secondary-container flex flex-col items-center justify-center text-on-secondary-container shrink-0 shadow-sm">
+          <span class="font-label-sm leading-none text-[10px] uppercase tracking-widest">OCT</span>
+          <span class="font-headline-sm leading-none text-2xl font-semibold">12</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <h3 class="font-headline-sm text-on-surface">Beginner Wheel Throwing</h3>
+            <span class="text-[11px] font-label-sm uppercase tracking-widest bg-tertiary-fixed text-on-secondary-container px-2.5 py-0.5 rounded-full">Beginner</span>
+          </div>
+          <div class="flex flex-wrap gap-x-5 gap-y-1.5 mt-1.5">
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">schedule</span> 10:00 AM – 1:00 PM
+            </span>
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">person</span> Elena Rossi
+            </span>
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">group</span> 5 / 8 spots left
+            </span>
+          </div>
+          <!-- Availability bar -->
+          <div class="mt-3 w-48 availability-bar">
+            <div class="availability-fill" style="width: 37.5%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between w-full md:w-auto md:gap-10 shrink-0">
+        <div>
+          <span class="font-label-sm text-on-surface-variant block uppercase opacity-60 tracking-widest">Investment</span>
+          <span class="font-headline-sm text-primary text-2xl">$85</span>
+        </div>
+        <button class="bg-primary text-on-primary px-8 py-3.5 font-label-md rounded-full shadow-sm hover:bg-primary-container transition-all active:scale-95">
+          Book Now
+        </button>
+      </div>
+    </div>
+
+    <!-- Class Card 2 — Available -->
+    <div class="bg-surface tactile-shadow rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 card-hover ghost-border reveal stagger-1">
+      <div class="flex items-center gap-6">
+        <div class="w-16 h-16 rounded-2xl bg-secondary-container flex flex-col items-center justify-center text-on-secondary-container shrink-0 shadow-sm">
+          <span class="font-label-sm leading-none text-[10px] uppercase tracking-widest">OCT</span>
+          <span class="font-headline-sm leading-none text-2xl font-semibold">15</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <h3 class="font-headline-sm text-on-surface">Evening Clay &amp; Sip</h3>
+            <span class="text-[11px] font-label-sm uppercase tracking-widest bg-primary-fixed text-primary px-2.5 py-0.5 rounded-full">Popular</span>
+          </div>
+          <div class="flex flex-wrap gap-x-5 gap-y-1.5 mt-1.5">
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">schedule</span> 6:30 PM – 9:00 PM
+            </span>
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">person</span> Marcus Thorne
+            </span>
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">group</span> 2 / 8 spots left
+            </span>
+          </div>
+          <div class="mt-3 w-48 availability-bar">
+            <div class="availability-fill" style="width: 75%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between w-full md:w-auto md:gap-10 shrink-0">
+        <div>
+          <span class="font-label-sm text-on-surface-variant block uppercase opacity-60 tracking-widest">Investment</span>
+          <span class="font-headline-sm text-primary text-2xl">$95</span>
+        </div>
+        <button class="bg-primary text-on-primary px-8 py-3.5 font-label-md rounded-full shadow-sm hover:bg-primary-container transition-all active:scale-95">
+          Book Now
+        </button>
+      </div>
+    </div>
+
+    <!-- Class Card 3 — Sold Out -->
+    <div class="bg-surface rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 ghost-border opacity-55 reveal stagger-2">
+      <div class="flex items-center gap-6">
+        <div class="w-16 h-16 rounded-2xl bg-surface-dim flex flex-col items-center justify-center text-on-surface-variant shrink-0">
+          <span class="font-label-sm leading-none text-[10px] uppercase tracking-widest">OCT</span>
+          <span class="font-headline-sm leading-none text-2xl font-semibold">18</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <h3 class="font-headline-sm text-on-surface">Intermediate Forms</h3>
+            <span class="text-[11px] font-label-sm uppercase tracking-widest bg-surface-dim text-on-surface-variant px-2.5 py-0.5 rounded-full">Intermediate</span>
+          </div>
+          <div class="flex flex-wrap gap-x-5 gap-y-1.5 mt-1.5">
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">schedule</span> 1:00 PM – 4:00 PM
+            </span>
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">person</span> Elena Rossi
+            </span>
+          </div>
+          <div class="mt-3 w-48 availability-bar">
+            <div class="availability-fill" style="width: 100%; background: linear-gradient(to right, #87736c, #dac1ba);"></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between w-full md:w-auto md:gap-10 shrink-0">
+        <div>
+          <span class="font-label-sm text-on-surface-variant block uppercase tracking-widest font-bold">Sold Out</span>
+          <span class="font-headline-sm text-on-surface-variant text-2xl">$85</span>
+        </div>
+        <button class="border-2 border-outline text-on-surface-variant px-8 py-3.5 font-label-md rounded-full cursor-not-allowed pointer-events-none">
+          Waiting List
+        </button>
+      </div>
+    </div>
+
+    <!-- Class Card 4 — New class added -->
+    <div class="bg-surface tactile-shadow rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 card-hover ghost-border reveal stagger-3">
+      <div class="flex items-center gap-6">
+        <div class="w-16 h-16 rounded-2xl bg-secondary-container flex flex-col items-center justify-center text-on-secondary-container shrink-0 shadow-sm">
+          <span class="font-label-sm leading-none text-[10px] uppercase tracking-widest">OCT</span>
+          <span class="font-headline-sm leading-none text-2xl font-semibold">22</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <h3 class="font-headline-sm text-on-surface">Weekend Glaze Workshop</h3>
+            <span class="text-[11px] font-label-sm uppercase tracking-widest bg-tertiary-fixed text-on-secondary-container px-2.5 py-0.5 rounded-full">All Levels</span>
+          </div>
+          <div class="flex flex-wrap gap-x-5 gap-y-1.5 mt-1.5">
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">schedule</span> 11:00 AM – 2:00 PM
+            </span>
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">person</span> Marcus Thorne
+            </span>
+            <span class="flex items-center gap-1.5 text-on-surface-variant font-label-md">
+              <span class="material-symbols-outlined text-[15px]">group</span> 7 / 8 spots left
+            </span>
+          </div>
+          <div class="mt-3 w-48 availability-bar">
+            <div class="availability-fill" style="width: 12.5%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between w-full md:w-auto md:gap-10 shrink-0">
+        <div>
+          <span class="font-label-sm text-on-surface-variant block uppercase opacity-60 tracking-widest">Investment</span>
+          <span class="font-headline-sm text-primary text-2xl">$75</span>
+        </div>
+        <button class="bg-primary text-on-primary px-8 py-3.5 font-label-md rounded-full shadow-sm hover:bg-primary-container transition-all active:scale-95">
+          Book Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Private Workshop CTA -->
+  <div class="mt-14 bg-surface-container rounded-3xl p-10 md:p-14 flex flex-col md:flex-row items-center gap-10 ghost-border reveal overflow-hidden relative">
+    <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-secondary-container/50 pointer-events-none"></div>
+    <div class="absolute right-32 bottom-0 w-32 h-32 rounded-full bg-primary-fixed/30 pointer-events-none"></div>
+    <div class="flex-1 relative z-10">
+      <div class="section-label font-label-sm text-primary uppercase tracking-[0.2em] mb-4">Private Events</div>
+      <h3 class="font-display-lg text-headline-md text-on-surface mb-4">Want a private workshop?</h3>
+      <p class="font-body-md text-on-surface-variant max-w-lg">We offer customized experiences for teams, birthdays, and small groups of up to 8 people. Reach out to design your intentional gathering — we handle everything.</p>
+      <div class="flex flex-wrap gap-4 mt-6">
+        <div class="flex items-center gap-2 text-on-surface-variant font-label-md">
+          <span class="material-symbols-outlined text-primary text-[16px]">check</span>
+          Up to 8 guests
+        </div>
+        <div class="flex items-center gap-2 text-on-surface-variant font-label-md">
+          <span class="material-symbols-outlined text-primary text-[16px]">check</span>
+          Fully catered option
+        </div>
+        <div class="flex items-center gap-2 text-on-surface-variant font-label-md">
+          <span class="material-symbols-outlined text-primary text-[16px]">check</span>
+          Custom duration
+        </div>
+      </div>
+    </div>
+    <button class="border-2 border-primary text-primary px-10 py-4 font-label-md rounded-full hover:bg-primary hover:text-on-primary transition-all active:scale-95 shrink-0 relative z-10">
+      Inquire for Private Group
+    </button>
+  </div>
+</section>
+
+<!-- ===================== INSTRUCTORS SECTION ===================== -->
+<section class="py-24 bg-surface-container-low" id="instructors">
+  <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="text-center mb-14 reveal">
+      <div class="section-label font-label-sm text-primary uppercase tracking-[0.2em] justify-center mb-4">Meet the Makers</div>
+      <h2 class="font-display-lg text-headline-md md:text-display-lg text-on-surface">Your instructors</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Instructor 1 -->
+      <div class="bg-surface rounded-2xl p-8 ghost-border reveal card-hover flex gap-6 items-start">
+        <div class="w-20 h-20 rounded-2xl overflow-hidden shrink-0 bg-secondary-container">
+          <img alt="Elena Rossi"
+            class="w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh45FipSlkNmNY_wnkDY4OGlJt4_K8X7kKutbQSRAUvlZO4M4PyBNxbNpS8d2cHGIK9tJGBaXcuHZ0pVtKQbWkWHn7gdGNwHbEWqU_4LRtAI-oTaYutR0MTBuGpcw-iUfEyoYNBC2dRAWYtsyWECjVL7lteSG5Zs8H8QaA-bTXUc5CHz-v-ucKC3ch6AB3s3756QDMo5U_h-ZVOx062oZDzRYga1qcc6PK_-ahvJt3vTmIIFpiJqzxcP6K0SC_RYk2Pq7PprVyhzI"/>
+        </div>
+        <div>
+          <h3 class="font-headline-sm text-on-surface">Elena Rossi</h3>
+          <div class="font-label-sm text-primary uppercase tracking-widest mt-1 mb-3">Lead Ceramicist</div>
+          <p class="font-body-md text-on-surface-variant leading-relaxed">
+            Trained at the Florence Academy of Ceramics, Elena brings 14 years of wheel-throwing mastery. Her work is influenced by Italian functional ware and Japanese wabi-sabi philosophy.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="text-[11px] font-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full">Wheel Throwing</span>
+            <span class="text-[11px] font-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full">Sculptural Forms</span>
+            <span class="text-[11px] font-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full">Raku Firing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructor 2 -->
+      <div class="bg-surface rounded-2xl p-8 ghost-border reveal stagger-1 card-hover flex gap-6 items-start">
+        <div class="w-20 h-20 rounded-2xl overflow-hidden shrink-0 bg-secondary-container">
+          <img alt="Marcus Thorne"
+            class="w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm_-DvxIKDOz348hi09CLIeYvPLtp8BcFF5263FXCXgQ0c9WH2xO_oImP1PJUpM4WLgMvyasqKCrx3ZxuRcfrr-yYLzw_CXyns6K7cTizLQ-eAc4r7U2tbww2wPmUyOm7VjcquQUFb_M5Je_yt7b8vNWLl_kAg-qAu6FGs9syuSN47aziwtNfXOr0dPlszAQeISMYVy3j62gLdxwzjYFxuxE2Gmkt4kxGJ-xE35yv8ZrI9fRZAsBnD0uzitW6nUy80lwxIQxoH_PU"/>
+        </div>
+        <div>
+          <h3 class="font-headline-sm text-on-surface">Marcus Thorne</h3>
+          <div class="font-label-sm text-primary uppercase tracking-widest mt-1 mb-3">Glaze Specialist</div>
+          <p class="font-body-md text-on-surface-variant leading-relaxed">
+            A second-generation potter with deep roots in Scandinavian ceramics, Marcus specializes in glaze chemistry and surface decoration, crafting some of the most unexpected fired results you've ever seen.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="text-[11px] font-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full">Glaze Chemistry</span>
+            <span class="text-[11px] font-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full">Soda Firing</span>
+            <span class="text-[11px] font-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full">Surface Texture</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS SECTION ===================== -->
+<section class="py-24 bg-surface overflow-hidden">
+  <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="text-center mb-14 reveal">
+      <div class="section-label font-label-sm text-primary uppercase tracking-[0.2em] justify-center mb-4">Student Stories</div>
+      <h2 class="font-display-lg text-headline-md md:text-display-lg text-on-surface">What our students say</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+      <!-- Testimonial 1 -->
+      <div class="bg-surface-container rounded-2xl p-8 ghost-border reveal card-hover flex flex-col">
+        <div class="quote-mark mb-2">"</div>
+        <p class="font-body-lg text-on-surface-variant leading-relaxed flex-1">
+          I walked in with zero pottery experience and left with a bowl I'm genuinely proud of. Elena makes beginners feel completely at home.
+        </p>
+        <div class="mt-6 pt-6 border-t border-outline-variant/30 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-label-md">AM</div>
+          <div>
+            <div class="font-body-md text-on-surface font-medium">Aisha M.</div>
+            <div class="flex gap-0.5 mt-0.5">
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bg-surface-container rounded-2xl p-8 ghost-border reveal stagger-1 card-hover flex flex-col">
+        <div class="quote-mark mb-2">"</div>
+        <p class="font-body-lg text-on-surface-variant leading-relaxed flex-1">
+          The Evening Clay & Sip is hands-down one of the best date night activities in the city. The vibe, the instruction, the wine — all perfect.
+        </p>
+        <div class="mt-6 pt-6 border-t border-outline-variant/30 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-label-md">TK</div>
+          <div>
+            <div class="font-body-md text-on-surface font-medium">Tom &amp; Katie R.</div>
+            <div class="flex gap-0.5 mt-0.5">
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bg-surface-container rounded-2xl p-8 ghost-border reveal stagger-2 card-hover flex flex-col">
+        <div class="quote-mark mb-2">"</div>
+        <p class="font-body-lg text-on-surface-variant leading-relaxed flex-1">
+          We booked a private session for our whole team and it was transformative. You haven't really bonded with colleagues until you've failed at centering clay together.
+        </p>
+        <div class="mt-6 pt-6 border-t border-outline-variant/30 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-label-md">SL</div>
+          <div>
+            <div class="font-body-md text-on-surface font-medium">Sophia L.</div>
+            <div class="flex gap-0.5 mt-0.5">
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+              <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings:'FILL' 1">star</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEWSLETTER BANNER ===================== -->
+<section class="py-20 bg-primary relative overflow-hidden">
+  <div class="absolute -left-24 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-primary-container/20 pointer-events-none"></div>
+  <div class="absolute -right-12 bottom-0 w-64 h-64 rounded-full bg-on-primary/5 pointer-events-none"></div>
+  <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
+    <h2 class="font-display-lg text-display-lg-mobile md:text-headline-md text-on-primary mb-4">Stay in the loop</h2>
+    <p class="font-body-lg text-on-primary/80 mb-8 max-w-lg mx-auto">Get early access to new class dates, glaze workshop announcements, and seasonal events right in your inbox.</p>
+    <div class="flex gap-3 max-w-md mx-auto">
+      <input type="email" placeholder="your@email.com"
+        class="flex-1 bg-on-primary/10 border border-on-primary/20 text-on-primary placeholder-on-primary/50 rounded-full px-6 py-3.5 font-body-md focus:outline-none focus:border-on-primary/60 transition-colors"/>
+      <button class="bg-on-primary text-primary px-7 py-3.5 rounded-full font-label-md shrink-0 hover:bg-primary-fixed transition-all active:scale-95">
+        Subscribe
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="w-full py-16 bg-surface-container border-t border-outline-variant/30">
+  <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <!-- Brand -->
+      <div class="md:col-span-2 flex flex-col gap-5">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <ellipse cx="9" cy="10" rx="7" ry="4" stroke="#92462d" stroke-width="1.5" fill="none"/>
+              <path d="M4 10 Q9 4 14 10" stroke="#92462d" stroke-width="1.5" fill="none"/>
+              <circle cx="9" cy="5" r="1.5" fill="#92462d"/>
+            </svg>
+          </div>
+          <span class="font-display-lg text-headline-sm text-on-surface">Stoneware Studio</span>
+        </div>
+        <p class="font-body-md text-on-surface-variant max-w-xs leading-relaxed">
+          A space dedicated to the slow art of ceramics and the community that builds around it. Come for the clay. Stay for the people.
+        </p>
+        <!-- Social Icons -->
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-full bg-surface flex items-center justify-center ghost-border hover:bg-primary hover:text-on-primary transition-all group">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-on-surface-variant group-hover:text-on-primary transition-colors"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-surface flex items-center justify-center ghost-border hover:bg-primary hover:text-on-primary transition-all group">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-on-surface-variant group-hover:text-on-primary transition-colors"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-surface flex items-center justify-center ghost-border hover:bg-primary hover:text-on-primary transition-all group">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-on-surface-variant group-hover:text-on-primary transition-colors"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="flex flex-col gap-4">
+        <span class="font-label-sm text-primary uppercase tracking-widest">Contact &amp; Visit</span>
+        <div class="flex flex-col gap-3 font-body-md text-on-surface-variant">
+          <a href="#" class="flex items-start gap-2 hover:text-primary transition-colors group">
+            <span class="material-symbols-outlined text-[16px] mt-0.5 shrink-0 group-hover:text-primary transition-colors">location_on</span>
+            123 Clay Lane, Studio City, CA
+          </a>
+          <a href="#" class="flex items-center gap-2 hover:text-primary transition-colors group">
+            <span class="material-symbols-outlined text-[16px] shrink-0 group-hover:text-primary transition-colors">schedule</span>
+            Mon–Sat: 9am – 6pm
+          </a>
+          <a href="mailto:hello@stonewarestudio.com" class="flex items-center gap-2 hover:text-primary transition-colors group">
+            <span class="material-symbols-outlined text-[16px] shrink-0 group-hover:text-primary transition-colors">mail</span>
+            hello@stonewarestudio.com
+          </a>
+          <a href="tel:+15550001234" class="flex items-center gap-2 hover:text-primary transition-colors group">
+            <span class="material-symbols-outlined text-[16px] shrink-0 group-hover:text-primary transition-colors">phone</span>
+            (555) 000-1234
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex flex-col gap-4">
+        <span class="font-label-sm text-primary uppercase tracking-widest">Navigation</span>
+        <div class="flex flex-col gap-2.5 font-body-md text-on-surface-variant">
+          <a class="hover:text-primary transition-colors ink-underline pb-0.5" href="#">Classes &amp; Schedule</a>
+          <a class="hover:text-primary transition-colors ink-underline pb-0.5" href="#gallery">Gallery</a>
+          <a class="hover:text-primary transition-colors ink-underline pb-0.5" href="#about">About the Studio</a>
+          <a class="hover:text-primary transition-colors ink-underline pb-0.5" href="#instructors">Our Instructors</a>
+          <a class="hover:text-primary transition-colors ink-underline pb-0.5" href="#">Gift Cards</a>
+        </div>
+        <div class="flex flex-col gap-2 mt-4 font-body-md text-on-surface-variant/60 text-sm">
+          <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+          <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="font-body-md text-on-surface-variant/60 text-sm">© 2024 Stoneware Studio. Crafted with intention.</div>
+      <div class="flex items-center gap-2 font-label-sm text-on-surface-variant/50 text-xs uppercase tracking-widest">
+        <span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim inline-block"></span>
+        Studio City, California
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  let menuOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    bar1.style.transform = menuOpen ? 'translateY(8px) rotate(45deg)' : '';
+    bar2.style.opacity = menuOpen ? '0' : '1';
+    bar3.style.transform = menuOpen ? 'translateY(-8px) rotate(-45deg)' : '';
+    bar3.style.width = menuOpen ? '20px' : '';
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      bar1.style.transform = '';
+      bar2.style.opacity = '1';
+      bar3.style.transform = '';
+    });
+  });
+
+  // Scroll-based behaviors
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+
+    // Floating CTA
+    const floatingCta = document.getElementById('floatingCta');
+    floatingCta.classList.toggle('show', scrolled > 400);
+
+    // Hero image parallax
+    const heroImg = document.querySelector('header img');
+    if (heroImg) {
+      heroImg.style.transform = `translateY(${scrolled * 0.08}px) scale(1.05)`;
+    }
+  });
+
+  // Intersection Observer for reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Availability bar animation on scroll
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target.querySelector('.availability-fill');
+        if (fill) {
+          const targetWidth = fill.style.width;
+          fill.style.width = '0%';
+          requestAnimationFrame(() => {
+            fill.style.width = targetWidth;
+          });
+        }
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.availability-bar').forEach(bar => barObserver.observe(bar));
+</script>
+</body>
+</html>
